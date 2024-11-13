@@ -1,0 +1,14 @@
+# Core dependencies
+streamlit==1.32.0
+pypdf==4.0.1
+python-dotenv==1.0.1
+
+# Vector store and embeddings
+chromadb==0.4.24
+sentence-transformers==2.5.1
+
+# Machine learning
+# --extra-index-url https://download.pytorch.org/whl/cu118
+torch==2.1.1
+transformers==4.35.2
+accelerate
