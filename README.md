@@ -78,3 +78,48 @@ content-engine/
 ├── requirements.txt               # Project dependencies
 ├── Dockerfile                     # Docker configuration
 └── .env                           # Environment configuration
+```
+## 🐳 Docker
+
+To run this project in a Docker container, use the provided Dockerfile.
+
+1. Create a Dockerfile in the root directory with the following content:
+   ```plaintext
+   
+   # Use an official Python runtime as a parent image
+    FROM python:3.9-slim
+
+    # Set environment variables
+    ENV PYTHONUNBUFFERED=1
+
+    # Create a directory for the app
+    WORKDIR /app
+
+    # Copy the requirements file into the container at /app
+    COPY requirements.txt /app/
+
+    # Install PyTorch from extra index and other dependencies
+    RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+    # Copy the rest of the application code into the container
+    COPY . /app
+
+    # Expose the port Streamlit uses
+    EXPOSE 8501
+
+    # Run the Streamlit application
+    CMD ["streamlit", "run", "app.py"]
+2. Build the Docker image:
+   ```Plaintext
+    docker build -t content-engine .
+3. Run the Docker container:
+   ```Plaintext
+   docker run -p 8501:8501 content-engine
+    ```
+## 🔧 Configuration
+The application uses environment variables for configuration. Create a .env file in the root directory and set the following variables as needed:
+```Plaintext
+# Example environment variables
+DATABASE_PATH=./data/chroma
+
