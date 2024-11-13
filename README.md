@@ -117,9 +117,5 @@ To run this project in a Docker container, use the provided Dockerfile.
    ```Plaintext
    docker run -p 8501:8501 content-engine
     ```
-## 🔧 Configuration
-The application uses environment variables for configuration. Create a .env file in the root directory and set the following variables as needed:
-```Plaintext
-# Example environment variables
-DATABASE_PATH=./data/chroma
+
 
